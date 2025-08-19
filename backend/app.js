@@ -3,6 +3,7 @@ import db from './config/db.js';
 import express from 'express';
 import pedidosRouter from './routes/pedidosRouter.js';
 import ticketsRouter from './routes/ticketsRouter.js';
+import ordenRouter from './routes/ordenRouter.js';
 import authRouter from './routes/authRouter.js'
 import { verificarToken } from './middleware/auth.js';
 import usuariosRouter from './routes/usuariosRouter.js'
@@ -19,13 +20,15 @@ app.use(cookieParser());
 
 //Sincronizar la base de datos
 await db.authenticate();
-db.sync();
+//Cambiar y hacer migraciones
+// db.sync();
 
 //Realizar la autenticacion
 
 
 //Routing
-app.use('/auth', authRouter)
+app.use('/auth', authRouter);
+app.use('/orden', ordenRouter);
 app.use('/usuarios', verificarToken ,usuariosRouter);
 app.use('/pedidos', verificarToken ,pedidosRouter);
 app.use('/tickets', verificarToken ,ticketsRouter);

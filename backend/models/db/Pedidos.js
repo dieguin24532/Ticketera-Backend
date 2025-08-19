@@ -3,7 +3,7 @@ import db from '../../config/db.js';
 
 const Pedidos = db.define('pedidos', {
     id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
     },
     cliente: DataTypes.STRING,
