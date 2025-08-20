@@ -20,7 +20,7 @@ async function obtenerTickets(req, res) {
   }
 }
 
-async function generarQR(req, res) {
+async function generarEntrada(req, res) {
     const ticketId = req.params.id;
     const {PDF, ticket} = await generarEntradaPDF(ticketId);
     res.setHeader(
@@ -32,4 +32,4 @@ async function generarQR(req, res) {
     await enviarEmail(PDF , ticket)
 }
 
-export { obtenerTickets, generarQR };
+export { obtenerTickets, generarEntrada };

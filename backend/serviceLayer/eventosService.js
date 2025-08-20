@@ -19,6 +19,10 @@ export class eventoService {
     return await Posts.findByPk(idEvento);
   }
 
+  static async obtenerEventos() {
+    return await Eventos.findAll();
+  }
+
   static async armarEvento(eventoId) {
     const evento = await this.obtenerEventoById(eventoId);
     const eventoDetalle = await this.obtenerEventoDetalleById(eventoId);

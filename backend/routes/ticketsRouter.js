@@ -1,10 +1,10 @@
 import express from 'express';
-import { generarQR, obtenerTickets } from '../controllers/ticketsController.js';
+import { generarEntrada, obtenerTickets } from '../controllers/ticketsController.js';
 
 const router = express.Router();
 
 
 router.get('/', obtenerTickets);
-router.get('/pdf/:id', generarQR);
+router.get('/pdf/:id', generarEntrada);
 
 export default router;
