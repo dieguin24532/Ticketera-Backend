@@ -21,7 +21,7 @@ app.use(cookieParser());
 //Sincronizar la base de datos
 await db.authenticate();
 //Cambiar y hacer migraciones
-// db.sync();
+db.sync();
 
 //Realizar la autenticacion
 
