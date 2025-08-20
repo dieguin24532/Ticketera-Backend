@@ -2,7 +2,7 @@ import { ApiResponse } from "../dtos/ApiResponseDTO.js";
 import { enviarEmail } from "../helpers/emails.js";
 import { ticketService } from "../serviceLayer/ticketsService.js";
 import { generarEntradaPDF } from "../helpers/pdf.js";
-import { createValueErrorMsg } from "pdf-lib";
+
 
 async function obtenerTickets(req, res) {
     try {

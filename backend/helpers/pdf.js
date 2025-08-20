@@ -1,10 +1,17 @@
-import fs from "fs";
-import { PDFDocument, StandardFonts } from "pdf-lib";
-import { ticketService } from "../serviceLayer/ticketsService.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import { PDFDocument, StandardFonts } from 'pdf-lib';
+import { ticketService } from '../serviceLayer/ticketsService.js';
+
+// Necesario para obtener __dirname con ESModules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const generarEntradaPDF = async (ticketId) => {
     try {
-        const pdfBase = fs.readFileSync("./docs/TICKET_EXMA.PDF");
+        const pdfPath = path.resolve(__dirname, '../docs/TICKET_EXMA.PDF');
+        const pdfBase = fs.readFileSync(pdfPath);
         const pdfDoc = await PDFDocument.load(pdfBase);
 
         const paginas = pdfDoc.getPages();
