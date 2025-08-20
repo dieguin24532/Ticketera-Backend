@@ -9,11 +9,14 @@ async function recibirActualizaciónPedido(req, res) {
     const ruc_cedula = data.meta_data.find(
       (meta) => meta.key === "_billing_ruc_o_cedula"
     );
-
     let pedido = {
       id: data.id,
       ruc_cedula: ruc_cedula.value,
       ...data.billing,
+      total: data.total,
+      impuesto: data.total_tax,
+      descuento: data.discount_total,
+      metodo_pago: data.payment_method_title
     };
 
     if (data.status == "completed") {
@@ -38,24 +41,22 @@ async function recibirActualizaciónPedido(req, res) {
   } catch (error) {
     console.log(error);
     res
-      .staus(500)
+      .status(500)
       .json(ApiResponse.getResponse(500, "Error interno del servidor", null));
   }
 }
 
 async function obtenerPedidos(req, res) {
-  console.log('hola desde pedidos');
   
   try {
     const pedidos = await pedidoService.obtenerPedidos();
 
-    if(pedidos.length !== 0) {
-      console.log(entro);
+    if(pedidos.length === 0) {
       return res.status(200).json(ApiResponse.getResponse(200, 'No se encontraron pedidos' ,pedidos));
     }
-
     res.status(200).json(ApiResponse.getResponse(200, 'Pedidos obtenidos' ,pedidos));
   } catch (error) {
+    console.log(error);
     res
       .status(500)
       .json(ApiResponse.getResponse(500, "Error interno del servidor", null));
@@ -67,9 +68,9 @@ async function actualizarEmail(req, res) {
     const pedido = req.body;
     
     const insertado = await Pedidos.update(
-      { email: req.email },
+      { email: pedido.email },
       {
-        where: { req: pedido.id }
+        where: { id: pedido.id }
       }
     );
 

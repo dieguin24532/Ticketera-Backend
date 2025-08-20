@@ -10,7 +10,6 @@ const generarEntradaPDF = async (ticketId) => {
         const paginas = pdfDoc.getPages();
         const primeraPagina = paginas[0];
         let ticket = await ticketService.obtenerTicketById(ticketId);
-        console.log(ticket);
 
         // Cargar fuente por defecto (Helvetica)
         const fuente = await pdfDoc.embedFont(StandardFonts.Helvetica);

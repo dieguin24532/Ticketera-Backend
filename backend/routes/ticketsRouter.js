@@ -1,10 +1,11 @@
 import express from 'express';
-import { generarEntrada, obtenerTickets } from '../controllers/ticketsController.js';
+import { enviarEntrada, obtenerTickets, verEntrada } from '../controllers/ticketsController.js';
 
 const router = express.Router();
 
 
 router.get('/', obtenerTickets);
-router.get('/pdf/:id', generarEntrada);
+router.get('/ver-entrada/:id', verEntrada);
+router.post('/enviar-entrada/:id', enviarEntrada);
 
 export default router;

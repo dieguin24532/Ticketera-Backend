@@ -7,6 +7,7 @@ const Eventos = db.define('eventos', {
         type: DataTypes.INTEGER,
         primaryKey: true,
     },
+    lugar: DataTypes.STRING,
     nombre_evento: DataTypes.STRING,
     fecha_inicio: DataTypes.DATE,
     fecha_fin: DataTypes.DATE
