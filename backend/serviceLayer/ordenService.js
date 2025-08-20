@@ -100,7 +100,7 @@ export class ordenService {
         };
       })
     );
-
+    
     return {
       pedido: pedido,
       tickets: ticketsConDetalle,

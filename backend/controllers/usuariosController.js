@@ -5,13 +5,14 @@ import Usuario from "../models/db/Usuarios.js";
 const guardarUsuario = async (req, res) => {
 
     try{
-        const { nombre, password, email } = req.body;
-      
+        console.log(req);
         //TODO: Validaciones
+        console.log(req.body);
         const usuario = await Usuario.create(req.body);
         res.status(200).json(ApiResponse.getResponse(200, 'Usuario creado con éxito', usuario))
 
     } catch(error) {
+        console.log(error);
         res.status(500).json(ApiResponse.getResponse(500, 'Error interno del servidor', null))
     }
     
