@@ -8,6 +8,7 @@ export class pedidoService {
    * @returns
    */
   static async crearPedido(pedido, transaction ) {
+    console.log(pedido);
     return await Pedidos.create({
       id: pedido.id,
       cliente: `${pedido.first_name} ${pedido.last_name}`,
@@ -15,6 +16,10 @@ export class pedidoService {
       telefono: pedido.phone,
       ruc_cedula: pedido.ruc_cedula,
       cantidad: 15,
+      total: pedido.total,
+      impuesto: pedido.impuesto,
+      descuento: pedido.descuento,
+      metodo_pago: pedido.metodo_pago
     },
     {
       transaction: transaction

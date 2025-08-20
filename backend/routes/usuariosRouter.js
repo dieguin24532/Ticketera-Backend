@@ -3,7 +3,7 @@ import { guardarUsuario, obtenerUsuarios } from '../controllers/usuariosControll
 
 const router = express.Router();
 
-router.post('/', guardarUsuario);
 router.get('/', obtenerUsuarios);
+router.post('/', guardarUsuario);
 
 export default router;
